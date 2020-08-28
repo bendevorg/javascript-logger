@@ -1,4 +1,4 @@
-const logger = require('..');
+const logger = require('../src');
 const { expect } = require('chai');
 const app = require('express')();
 const api = require('supertest');
