@@ -77,3 +77,6 @@ package-lock.json
 
 # Coverage files
 coverage/
+
+# Lib files
+lib/
