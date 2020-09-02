@@ -25,9 +25,5 @@
   "include": [
     "./src" // *** The files TypeScript should type check ***
   ],
-  "exclude": ["node_modules", "test"], // *** The files to not type check ***
-  "extends": [
-    "tslint:latest",
-    "tslint-config-prettier"
-  ]
+  "exclude": ["node_modules", "test"] // *** The files to not type check ***
 }
