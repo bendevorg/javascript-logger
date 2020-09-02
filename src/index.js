@@ -21,8 +21,8 @@ function info(data, req = {}, res = {}) {
   return console.info(JSON.stringify({
     level: levels.INFO,
     requestId: req.requestId || res.requestId,
-    path: req.path,
-    method: req.method,
+    path: req.path || res.path,
+    method: req.method || res.method,
     processTime: res.processTime,
     statusCode: res.statusCode,
     ...data,
@@ -33,8 +33,8 @@ function error(err = {}, req = {}, res = {}) {
   return console.error(JSON.stringify({
     level: levels.ERROR,
     requestId: req.requestId || res.requestId,
-    path: req.path,
-    method: req.method,
+    path: req.path || res.path,
+    method: req.method || res.method,
     processTime: res.processTime,
     statusCode: res.statusCode,
     code: err.code,
@@ -46,8 +46,8 @@ function warn(data = {}, req = {}, res = {}) {
   return console.warn(JSON.stringify({
     level: levels.WARNING,
     requestId: req.requestId || res.requestId,
-    path: req.path,
-    method: req.method,
+    path: req.path || res.path,
+    method: req.method || res.method,
     processTime: res.processTime,
     statusCode: res.statusCode,
     ...data,
@@ -73,6 +73,7 @@ function middleware(req, res, next) {
   req.requestId = requestId;
   res.requestId = requestId;
   res.path = req.path;
+  res.method = req.method;
   res.startedAt = Date.now();
   onFinished(res, listener);
   info({}, req);
