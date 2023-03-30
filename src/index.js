@@ -49,13 +49,19 @@ function error(err = {}, req = {}, res = {}) {
 		processTime: res.processTime,
 		statusCode: res.statusCode,
 	};
-	console.log(typeof err);
 	if (typeof err === "object") {
-		log = {
-			...log,
-			code: err.code,
-			message: err.message,
-		};
+		if (err.code || err.message) {
+			log = {
+				...log,
+				code: err.code,
+				message: err.message,
+			};
+		} else {
+			log = {
+				...log,
+				...err,
+			};
+		}
 	} else {
 		log = {
 			...log,
